@@ -39,8 +39,16 @@ public class SwapSubCommand extends AbstractSubCommand {
 			sender.sendMessage(Messages.INVALID_PLAYERNAME);
 			return true;
 		}
+
+		// Check if the player is self
 		if (sender.equals(target)) {
 			sender.sendMessage(Messages.CANT_SWAP_SELF);
+			return true;
+		}
+
+		// Check if player has the special permission
+		if (target.hasPermission("jailplusplus.prevent.swap")) {
+			sender.sendMessage(Messages.CANT_SWAP_PLAYER);
 			return true;
 		}
 

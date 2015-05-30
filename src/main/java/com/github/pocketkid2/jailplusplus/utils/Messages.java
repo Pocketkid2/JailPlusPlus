@@ -30,4 +30,5 @@ public interface Messages {
 	String ESCAPE_SUCCESS = ChatColor.AQUA + "You escaped successfully!";
 	String ESCAPE_FAILURE = ChatColor.AQUA + "You were not able to escape!";
 	String CANT_SWAP_PLAYER = ChatColor.RED + "You can't take that player's place!";
+	String CANT_JAIL_PLAYER = ChatColor.RED + "That player can't be jailed!";
 }

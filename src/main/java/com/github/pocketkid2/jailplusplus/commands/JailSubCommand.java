@@ -42,6 +42,12 @@ public class JailSubCommand extends AbstractSubCommand {
 			return true;
 		}
 
+		// Check if this player has the special permission
+		if (player.hasPermission("jailplusplus.prevent.jail")) {
+			sender.sendMessage(Messages.CANT_JAIL_PLAYER);
+			return true;
+		}
+
 		// Check if this player is jailed
 		if (plugin.isPlayerInJail(player)) {
 			unjail(sender, player);
