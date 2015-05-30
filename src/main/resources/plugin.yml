@@ -1,0 +1,63 @@
+name: JailPlusPlus
+main: com.github.pocketkid2.jailplusplus.JailPlugin
+version: 0.1.0
+author: Pocketkid2
+description: More than just a simple jail plugin.
+depend: [Vault]
+commands:
+    jailplusplus:
+        description: Main plugin command
+        usage: /<command> help [command]
+        permission: jailplusplus.command
+        aliases: [jpp]
+permissions:
+    jailplusplus.command.*:
+        description: All command permissions
+        default: op
+        children:
+            jailplusplus.command: true
+            jailplusplus.command.help: true
+            jailplusplus.command.info: true
+            jailplusplus.command.list: true
+            jailplusplus.command.jail: true
+            jailplusplus.command.add: true
+            jailplusplus.command.remove: true
+            jailplusplus.command.bail: true
+            jailplusplus.command.swap: true
+            jailplusplus.command.escape: true
+    jailplusplus.command:
+        description: Main plugin command
+        default: true
+    jailplusplus.command.help:
+        description: Allows you to use the command to see plugin help
+        default: true
+    jailplusplus.command.info:
+        description: Allows you to use the command to see jail information
+        default: true
+    jailplusplus.command.list:
+        description: Allows you to use the command to list jails or players
+        default: op
+    jailplusplus.command.jail:
+        description: Allows you to use the command to jail/unjail players
+        default: op
+    jailplusplus.command.add:
+        description: Allows you to use the command to add new jails
+        default: op
+    jailplusplus.command.remove:
+        description: Allows you to use the command to remove jails
+        default: op
+    jailplusplus.command.bail:
+        description: Allows you to use the command to bail a player
+        default: true
+    jailplusplus.command.swap:
+        desctiption: Allows you to use the command to swap with a player
+        default: true
+    jailplusplus.command.escape:
+        description: Allows you to use the command to try and escape
+        default: true
+    jailplusplus.prevent.jail:
+        description: You can't be jailed
+        default: op
+    jailplusplus.prevent.swap:
+        description: Nobody can take your place
+        default: false

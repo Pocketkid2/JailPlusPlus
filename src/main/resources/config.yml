@@ -1,0 +1,14 @@
+# Default jail variables (in case none are specified in command)
+default-values:
+    # Reason for jailing (String)
+    jail-reason: 'Breaking the rules'
+    # Amount of currency needed for bail (Double)
+    bail-amount: 50.0
+
+# Values for jail escaping
+escape-values:
+    # Chance of success in escaping (Integer, 0-100)
+    percentage-of-success: 10
+    
+    # Time in minutes before you can try to escape again (Integer)
+    cooldown-time: 20
