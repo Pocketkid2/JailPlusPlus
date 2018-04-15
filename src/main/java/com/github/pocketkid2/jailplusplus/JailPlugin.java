@@ -5,8 +5,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
 
-import net.milkbowl.vault.economy.Economy;
-
+import org.bstats.bukkit.Metrics;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.OfflinePlayer;
@@ -19,7 +18,8 @@ import com.github.pocketkid2.jailplusplus.listeners.JailListener;
 import com.github.pocketkid2.jailplusplus.utils.ConfigAccessor;
 import com.github.pocketkid2.jailplusplus.utils.CooldownManager;
 import com.github.pocketkid2.jailplusplus.utils.JailObject;
-import com.github.pocketkid2.jailplusplus.utils.MetricsLite;
+
+import net.milkbowl.vault.economy.Economy;
 
 public class JailPlugin extends JavaPlugin {
 
@@ -29,6 +29,8 @@ public class JailPlugin extends JavaPlugin {
 	public static Economy economy = null;
 
 	public CooldownManager cm;
+
+	public Metrics metrics;
 
 	@Override
 	public void onEnable() {
@@ -60,14 +62,8 @@ public class JailPlugin extends JavaPlugin {
 		// Create a new cooldown manager
 		cm = new CooldownManager();
 
-		// Setup Plugin Metrics
-		try {
-			MetricsLite metrics = new MetricsLite(this);
-			metrics.start();
-			getLogger().info("Metrics started suggessfully!");
-		} catch (Exception e) {
-			getLogger().warning("Error starting metrics!");
-		}
+		// Initialize bstats metrics
+		metrics = new Metrics(this);
 
 		// Log status
 		getLogger().info("Done!");
@@ -84,8 +80,7 @@ public class JailPlugin extends JavaPlugin {
 		getLogger().info("Done!");
 	}
 
-	private boolean setupEconomy()
-	{
+	private boolean setupEconomy() {
 		RegisteredServiceProvider<Economy> economyProvider = getServer().getServicesManager().getRegistration(net.milkbowl.vault.economy.Economy.class);
 		if (economyProvider != null) {
 			economy = economyProvider.getProvider();

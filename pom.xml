@@ -28,6 +28,29 @@
 			</resource>
 		</resources>
 		<finalName>${project.name}</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-shade-plugin</artifactId>
+				<version>3.1.0</version>
+				<configuration>
+					<relocations>
+						<relocation>
+							<pattern>org.bstats</pattern>
+							<shadedPattern>com.github.pocketkid2</shadedPattern>
+						</relocation>
+					</relocations>
+				</configuration>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>shade</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
 	</build>
 	<repositories>
 		<repository>
@@ -37,6 +60,10 @@
 		<repository>
 			<id>vault-repo</id>
 			<url>http://nexus.hc.to/content/repositories/pub_releases</url>
+		</repository>
+		<repository>
+			<id>bstats-repo</id>
+			<url>http://repo.bstats.org/content/repositories/releases/</url>
 		</repository>
 	</repositories>
 	<dependencies>
@@ -51,6 +78,12 @@
 			<artifactId>VaultAPI</artifactId>
 			<version>1.6</version>
 			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.bstats</groupId>
+			<artifactId>bstats-bukkit</artifactId>
+			<version>1.2</version>
+			<scope>compile</scope>
 		</dependency>
 	</dependencies>
 </project>
