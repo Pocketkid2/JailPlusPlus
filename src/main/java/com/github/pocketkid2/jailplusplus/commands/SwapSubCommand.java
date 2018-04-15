@@ -18,7 +18,6 @@ public class SwapSubCommand extends AbstractSubCommand {
 		aliases = new String[] { "swap" };
 	}
 
-	@SuppressWarnings("deprecation")
 	@Override
 	public boolean onCommand(CommandSender sender, String[] args) {
 		// Check for player

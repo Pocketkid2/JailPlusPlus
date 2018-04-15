@@ -1,7 +1,7 @@
-name: JailPlusPlus
-main: com.github.pocketkid2.jailplusplus.JailPlugin
-version: 0.1.0
-author: Pocketkid2
+name: ${name}
+main: ${groupId}.${artifactId}.JailPlugin
+version: ${version}
+author: ${author}
 description: More than just a simple jail plugin.
 depend: [Vault]
 commands:

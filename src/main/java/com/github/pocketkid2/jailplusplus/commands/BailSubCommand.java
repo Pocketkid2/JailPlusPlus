@@ -18,7 +18,6 @@ public class BailSubCommand extends AbstractSubCommand {
 		aliases = new String[] { "bail" };
 	}
 
-	@SuppressWarnings("deprecation")
 	@Override
 	public boolean onCommand(CommandSender sender, String[] args) {
 		// Check for player

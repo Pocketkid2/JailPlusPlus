@@ -20,7 +20,6 @@ public class JailSubCommand extends AbstractSubCommand {
 		aliases = new String[] { "jail", "unjail" };
 	}
 
-	@SuppressWarnings("deprecation")
 	@Override
 	public boolean onCommand(CommandSender sender, String[] args) {
 		// Check for first argument
