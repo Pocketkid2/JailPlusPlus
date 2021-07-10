@@ -4,6 +4,7 @@ version: ${version}
 author: ${author}
 description: More than just a simple jail plugin.
 depend: [Vault]
+api-version: 1.17
 commands:
     jailplusplus:
         description: Main plugin command

@@ -63,10 +63,10 @@ public class BailSubCommand extends AbstractSubCommand {
 	private void bailOut(Player sender, Player target, JailObject object) {
 		// Withdraw the amount
 		JailPlugin.economy.withdrawPlayer(sender, object.getBailAmount());
-		// Teleport the target
-		target.teleport(object.getPreviousLocation());
 		// Remove object
 		plugin.removePlayerObject(target);
+		// Teleport the target
+		target.teleport(object.getPreviousLocation());
 		// Notify the sender and the target
 		if (!sender.equals(target)) {
 			sender.sendMessage(Messages.PLAYER_WAS_BAILED);

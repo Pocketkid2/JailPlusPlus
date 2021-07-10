@@ -59,10 +59,11 @@ public class SwapSubCommand extends AbstractSubCommand {
 	private void swapOut(Player sender, Player target) {
 		// Get the object
 		JailObject object = plugin.getPlayerObject(target);
-		// Teleport the target out
-		target.teleport(object.getPreviousLocation());
 		// Remove the object
 		plugin.removePlayerObject(target);
+		// Teleport the target out
+		target.teleport(object.getPreviousLocation());
+
 		// Teleport the sender into the jail
 		sender.teleport(plugin.getJailLocation(object.getJailName()));
 		// Create the new object

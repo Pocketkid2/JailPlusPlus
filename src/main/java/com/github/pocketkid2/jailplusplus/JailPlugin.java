@@ -5,7 +5,6 @@ import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
 
-import org.bstats.bukkit.Metrics;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.OfflinePlayer;
@@ -29,8 +28,6 @@ public class JailPlugin extends JavaPlugin {
 	public static Economy economy = null;
 
 	public CooldownManager cm;
-
-	public Metrics metrics;
 
 	@Override
 	public void onEnable() {
@@ -62,9 +59,6 @@ public class JailPlugin extends JavaPlugin {
 		// Create a new cooldown manager
 		cm = new CooldownManager();
 
-		// Initialize bstats metrics
-		metrics = new Metrics(this);
-
 		// Log status
 		getLogger().info("Done!");
 	}
@@ -81,12 +75,13 @@ public class JailPlugin extends JavaPlugin {
 	}
 
 	private boolean setupEconomy() {
-		RegisteredServiceProvider<Economy> economyProvider = getServer().getServicesManager().getRegistration(net.milkbowl.vault.economy.Economy.class);
+		RegisteredServiceProvider<Economy> economyProvider = getServer().getServicesManager()
+				.getRegistration(net.milkbowl.vault.economy.Economy.class);
 		if (economyProvider != null) {
 			economy = economyProvider.getProvider();
 		}
 
-		return (economy != null);
+		return economy != null;
 	}
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })
@@ -108,11 +103,9 @@ public class JailPlugin extends JavaPlugin {
 	}
 
 	public Location getJailLocation(String name) {
-		if (getJails().containsKey(name)) {
+		if (getJails().containsKey(name))
 			return getJails().get(name);
-		} else {
-			return null;
-		}
+		return null;
 	}
 
 	public void setJailLocation(Location loc, String name) {
@@ -126,11 +119,9 @@ public class JailPlugin extends JavaPlugin {
 	}
 
 	public JailObject getPlayerObject(OfflinePlayer player) {
-		if (getPlayers().containsKey(player.getUniqueId().toString())) {
+		if (getPlayers().containsKey(player.getUniqueId().toString()))
 			return getPlayers().get(player.getUniqueId().toString());
-		} else {
-			return null;
-		}
+		return null;
 	}
 
 	public void addPlayerObject(JailObject object, OfflinePlayer player) {
@@ -155,18 +146,15 @@ public class JailPlugin extends JavaPlugin {
 	}
 
 	public boolean isPlayerInJail(OfflinePlayer player) {
-		if (getPlayers().containsKey(player.getUniqueId().toString())) {
+		if (getPlayers().containsKey(player.getUniqueId().toString()))
 			return true;
-		} else {
-			return false;
-		}
+		return false;
 	}
 
 	public OfflinePlayer lookup(String name) {
 		for (OfflinePlayer player : Bukkit.getOfflinePlayers()) {
-			if (player.getName().equalsIgnoreCase(name)) {
+			if (player.getName().equalsIgnoreCase(name))
 				return player;
-			}
 		}
 		return null;
 	}

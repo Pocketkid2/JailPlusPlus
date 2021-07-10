@@ -51,9 +51,8 @@ public class JailSubCommand extends AbstractSubCommand {
 		if (plugin.isPlayerInJail(player)) {
 			unjail(sender, player);
 			return true;
-		} else {
-			return jail(sender, player, args);
 		}
+		return jail(sender, player, args);
 	}
 
 	private boolean jail(CommandSender sender, Player player, String[] args) {
@@ -86,10 +85,10 @@ public class JailSubCommand extends AbstractSubCommand {
 
 		// Create object and store data
 		JailObject object = new JailObject(jailname, sender.getName(), bailAmount, reason, player.getLocation());
-		plugin.addPlayerObject(object, player);
 
 		// Get jail and teleport them there
 		player.teleport(plugin.getJailLocation(jailname));
+		plugin.addPlayerObject(object, player);
 
 		// Notify player and sender
 		sender.sendMessage(Messages.PLAYER_WAS_JAILED);
@@ -101,11 +100,9 @@ public class JailSubCommand extends AbstractSubCommand {
 	private void unjail(CommandSender sender, Player player) {
 		// Get jail object and teleport them back
 		JailObject object = plugin.getPlayerObject(player);
-		player.teleport(object.getPreviousLocation());
-
 		// Remove object
 		plugin.removePlayerObject(player);
-
+		player.teleport(object.getPreviousLocation());
 		// Notify player and sender
 		sender.sendMessage(Messages.PLAYER_WAS_UNJAILED);
 		player.sendMessage(Messages.YOU_WERE_UNJAILED);

@@ -5,6 +5,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.player.PlayerRespawnEvent;
+import org.bukkit.event.player.PlayerTeleportEvent;
 
 import com.github.pocketkid2.jailplusplus.JailPlugin;
 
@@ -34,6 +35,13 @@ public class JailListener implements Listener {
 	public void onPlayerRespawn(PlayerRespawnEvent event) {
 		if (plugin.isPlayerInJail(event.getPlayer())) {
 			event.setRespawnLocation(plugin.getJailLocation(plugin.getPlayerObject(event.getPlayer()).getJailName()));
+		}
+	}
+
+	@EventHandler
+	public void onPlayerTeleport(PlayerTeleportEvent event) {
+		if (plugin.isPlayerInJail(event.getPlayer())) {
+			event.setCancelled(true);
 		}
 	}
 }

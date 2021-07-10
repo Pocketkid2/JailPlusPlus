@@ -42,8 +42,8 @@ public class EscapeSubCommand extends AbstractSubCommand {
 		Random r = new Random(System.currentTimeMillis());
 		if (r.nextInt(100) < plugin.getConfig().getInt("escape-values.percentage-of-success")) {
 			// We escaped!
-			player.teleport(plugin.getPlayerObject(player).getPreviousLocation());
 			plugin.removePlayerObject(player);
+			player.teleport(plugin.getPlayerObject(player).getPreviousLocation());
 			player.sendMessage(Messages.ESCAPE_SUCCESS);
 		} else {
 			// We didn't
