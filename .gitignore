@@ -11,6 +11,10 @@
 # Virtual Machine crash logs
 hs_err_pid*
 
+.settings/
+.classpath
+.DS_Store
+
 target/
 pom.xml.tag
 pom.xml.releaseBackup
